@@ -1,5 +1,10 @@
 const express = require("express");
 const { Worker } = require("worker_threads");
+const client = require("prom-client");
+const { register } = require("module");
+
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics({ register: client.register });
 
 const app = express();
 
@@ -23,6 +28,13 @@ app.get("/blocking", async (req, res) => {
   worker.on("error", (error) => {
     res.status(404).send(`Error: ${error}`);
   });
+});
+
+// metrics
+app.get("/metrics", async (req, res) => {
+  res.setHeader("Content-Type", client.register.contentType);
+  const metrics = await client.register.metrics();
+  res.send(metrics);
 });
 
 app.listen(3000, () => {
