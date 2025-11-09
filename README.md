@@ -4,6 +4,10 @@
 time curl --get http://localhost:3000/blocking
 ```
 
+```js
+const THREAD_COUNT = 12; //change this line
+```
+
 ### test results
 
 | Test Scenario                | Implementation File                              | Worker Thread Count | Real Time (seconds) |
@@ -12,15 +16,11 @@ time curl --get http://localhost:3000/blocking
 | **Multi-threaded**           | [`./index-12-workers.js`](./index-12-workers.js) | 4                   | 10.275              |
 | **Optimized Multi-threaded** | [`./index-12-workers.js`](./index-12-workers.js) | 12                  | 4.417               |
 
-Execution Time (s)
-1 thread  (38.474s) | ████████████████████████████████████████████  (38.474)
-4 threads (10.275s) | ██████████                                    (10.275)
-12 threads (4.417s) | ████                                          (4.417)
+Relative speed to 1 thread
+1 thread   : 1.00 | █
+4 threads  : 3.74 | ████████
+12 threads : 8.71 | ███████████████████
 
-Speedup (relative to 1 thread)
-1 thread  : 1.000 | █
-4 threads : 3.743 | ███████████
-12 threads: 8.712 | █████████████████████████
 
 # ⚙️ Performance Scaling Chart
 
@@ -50,8 +50,4 @@ xychart-beta
   line "Execution Time" [38.474, 10.275, 4.417]
   bar "Speedup (×)" [1.0, 3.74, 8.71]
 
-```
-
-```js
-const THREAD_COUNT = 12; //change this line
 ```
