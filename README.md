@@ -18,6 +18,7 @@ const THREAD_COUNT = 12; //change this line
 
 Relative speed to 1 thread
 
+
 1 thread   : 1.00 | █
 
 4 threads  : 3.74 | ████████
