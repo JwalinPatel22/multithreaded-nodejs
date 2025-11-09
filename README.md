@@ -17,6 +17,7 @@ const THREAD_COUNT = 12; //change this line
 | **Optimized Multi-threaded** | [`./index-12-workers.js`](./index-12-workers.js) | 12                  | 4.417               |
 
 Relative speed to 1 thread
+
 1 thread   : 1.00 | █
 
 4 threads  : 3.74 | ████████
